@@ -6,7 +6,7 @@ public class AVlMain {
 
 	public static void menu() {
 		System.out.println("\n-----------------------------------");
-		System.out.println("      Arvore Binaria                 ");
+		System.out.println("      Arvore AVL                ");
 		System.out.println("-------------------------------------");
 		System.out.println("   1. Iserir um No                   ");
 		System.out.println("   2. Buscar um No                   ");
@@ -118,6 +118,14 @@ public class AVlMain {
 				break;
 			case 9:
 				System.out.println("Voce entrou no método TIPO DE ARVORE!");
+				int altura = arvore.alturaA();
+				double aux = Math.pow(2, altura+1);
+				int aux2 = (int)aux;
+				if (qntdNos == aux2-1) {
+					System.out.println("Arvore cheia!");
+				}else{
+					System.out.println("Implementar outras opções!");
+				}
 				break;	
 			default:
 				System.out.println("Opcao Inválida!");
