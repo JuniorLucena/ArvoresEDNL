@@ -16,7 +16,7 @@ public class AVlMain {
 		System.out.println("   6. Soma de todos os nos           ");
 		System.out.println("   7. Numero de nos da Arvore        ");
 		System.out.println("   8. Profundidade                   ");
-		System.out.println("   9. Estritamente Arvore            ");
+		System.out.println("   9. Tipo de Árvore                 ");
 		System.out.println("   0. Fim                            ");
 		System.out.println("-------------------------------------");
 		System.out.println("\nOpcao:");
@@ -85,7 +85,7 @@ public class AVlMain {
 					System.out.println("\nVoce entrou no metodo IMPRIMIR PRE-ORDEM!");
 					System.out.println("\nOrdem da Arvore: ");
 					arvore.printPreOrder();
-					break;
+					break;	
 				case 2:
 					System.out.println("\nVoce entrou no metododo INORDEM!");
 					System.out.println("\nOrdem da Arvore: ");
@@ -123,8 +123,12 @@ public class AVlMain {
 				int aux2 = (int)aux;
 				if (qntdNos == aux2-1) {
 					System.out.println("Arvore cheia!");
-				}else{
-					System.out.println("Implementar outras opções!");
+				}
+				if (arvore.estritamenteBinaria()) {
+					System.out.println("Estritamente binária!");
+				}
+				if(arvore.quaseCompleta()){
+					System.out.println("Arvore quase completa!");
 				}
 				break;	
 			default:

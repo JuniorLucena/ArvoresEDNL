@@ -40,7 +40,7 @@ public class ArvoreAvl {
 				}
 
 			} else {
-				// O nó já existe
+				// O nï¿½ jï¿½ existe
 			}
 		}
 	}
@@ -315,12 +315,47 @@ public class ArvoreAvl {
 
 		private void posOrder(No node) {
 			if (node != null) {
-				// System.out.println(node.val);
 				posOrder(node.getEsquerda());
 
 				posOrder(node.getDireita());
 				System.out.print(" " +node.getChave());
 			}
+		}
+		boolean validarEstritamenteBinaria = true;
+		public boolean estritamenteBinaria() {
+			return estritamenteBinaria(raiz);
+		}
+
+		private boolean estritamenteBinaria(No node) {
+			if (node != null) {
+				if (node.getEsquerda() == null && node.getDireita() != null) {
+					validarEstritamenteBinaria = false;
+				}else if (node.getEsquerda() != null && node.getDireita() == null) {
+					validarEstritamenteBinaria = false;
+				}
+				estritamenteBinaria(node.getEsquerda());
+				estritamenteBinaria(node.getDireita());
+			}
+			return validarEstritamenteBinaria;
+		}
+		
+		boolean validarQuaseCompleta = false;
+		public boolean quaseCompleta() {
+			return quaseCompleta(raiz);
+		}
+
+		private boolean quaseCompleta(No node) {
+			System.out.println(validarQuaseCompleta);
+			if (node != null) {
+				if (node.getEsquerda() == null && node.getDireita() != null) {
+					validarQuaseCompleta = true;
+				}else if (node.getEsquerda() != null && node.getDireita() == null) {
+					validarQuaseCompleta = true;
+				}
+				quaseCompleta(node.getEsquerda());
+				quaseCompleta(node.getDireita());
+			}
+			return validarQuaseCompleta;
 		}
 
 }
