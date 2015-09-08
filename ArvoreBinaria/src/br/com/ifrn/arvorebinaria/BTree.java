@@ -65,8 +65,8 @@ public class BTree {
 	}
 
 	// profundidade
-	public void profundidade() {
-		System.out.println(maxProfundidade(root)-1);
+	public int profundidade() {
+		return maxProfundidade(root)-1;
 		// verificar como é contabilizado o a profundidade da arvore
 	}
 	
@@ -78,6 +78,26 @@ public class BTree {
 
 		int x = left > right ? left + 1 : right + 1;
 		return x;
+	}
+	
+
+	public int alturaA() {
+		return altura(root);
+	}
+
+	public int altura(BTNode atual) {
+		if (atual == null) {
+			return -1;
+		}
+		if (atual.getEsq() == null && atual.getDir() == null) {
+			return 0;
+		} else if (atual.getEsq() == null) {
+			return 1 + altura(atual.getDir());
+		} else if (atual.getDir() == null) {
+			return 1 + altura(atual.getEsq());
+		} else {
+			return 1 + Math.max(altura(atual.getEsq()), altura(atual.getDir()));
+		}
 	}
 	
 	
@@ -132,7 +152,6 @@ public class BTree {
 		return t;
 	}
 	
-	//estritamente binaria
 	public void arvoreCheia(){
 		arvoreCheia(root);
 	}
@@ -142,6 +161,42 @@ public class BTree {
 		}else{
 			System.out.println(n.val);
 		}
+	}
+	
+	boolean validarEstritamenteBinaria = true;
+	public boolean estritamenteBinaria() {
+		return estritamenteBinaria(root);
+	}
+
+	private boolean estritamenteBinaria(BTNode node) {
+		if (node != null) {
+			if (node.getEsq() == null && node.getDir() != null) {
+				validarEstritamenteBinaria = false;
+			}else if (node.getEsq() != null && node.getDir() == null) {
+				validarEstritamenteBinaria = false;
+			}
+			estritamenteBinaria(node.getEsq());
+			estritamenteBinaria(node.getDir());
+		}
+		return validarEstritamenteBinaria;
+	}
+	
+	boolean validarQuaseCompleta = false;
+	public boolean quaseCompleta() {
+		return quaseCompleta(root);
+	}
+
+	private boolean quaseCompleta(BTNode node) {
+		if (node != null) {
+			if (node.getEsq() == null && node.getDir() != null) {
+				validarQuaseCompleta = true;
+			}else if (node.getEsq() != null && node.getDir() == null) {
+				validarQuaseCompleta = true;
+			}
+			quaseCompleta(node.getEsq());
+			quaseCompleta(node.getDir());
+		}
+		return validarQuaseCompleta;
 	}
 
 }

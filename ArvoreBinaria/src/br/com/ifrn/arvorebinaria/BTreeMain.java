@@ -39,12 +39,7 @@ public class BTreeMain {
 		BTree arvore = new BTree();
 		int valorNos = 0;
 		int qntdNos = 0;
-		/**/
-		/*arvore.inserirBTNode(1);
-		arvore.inserirBTNode(2);
-		arvore.inserirBTNode(3);
-		arvore.inserirBTNode(4);*/
-		/**/
+		
 		int opc1,opc2,valor;
 		menu();
 		opc1 = entrada.nextInt();
@@ -101,7 +96,7 @@ public class BTreeMain {
 				break;
 			case 5:
 				System.out.println("\nVoce entrou no metodo PROFUNDIDADE da Arvore!");
-				arvore.profundidade();
+				System.out.println("Profundidade da árvore: "+ arvore.profundidade());
 				break;
 			case 6:
 				System.out.println("O valor da soma de todos os NOS da Arvore eh: "+ valorNos);
@@ -110,8 +105,23 @@ public class BTreeMain {
 				System.out.println("A quantidade de NOS na Arvore eh: "+ qntdNos);
 				break;
 			case 8:
-				System.out.println("Voce entrou na opcao de TIPO DE ARVORE!");
-				arvore.arvoreCheia();
+				System.out.println("Voce entrou no método TIPO DE ARVORE!");
+				int altura = arvore.alturaA();
+				double aux = Math.pow(2, altura+1);
+				int completa = (int)Math.pow(2, arvore.profundidade());
+				int aux2 = (int)aux;
+				if (qntdNos == aux2-1) {
+					System.out.println("Arvore cheia!");
+				}
+				if (arvore.estritamenteBinaria()) {
+					System.out.println("Estritamente binária!");
+				}
+				if(arvore.quaseCompleta()){
+					System.out.println("Arvore quase completa!");
+				}
+				if (qntdNos == completa+1) {
+					System.out.println("Arvore Completa!");
+				}
 				break;	
 			default:
 				System.out.println("Opcao Invalida!");

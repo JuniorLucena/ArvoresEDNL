@@ -120,6 +120,7 @@ public class AVlMain {
 				System.out.println("Voce entrou no método TIPO DE ARVORE!");
 				int altura = arvore.alturaA();
 				double aux = Math.pow(2, altura+1);
+				int completa = (int)Math.pow(2, arvore.profundidade());
 				int aux2 = (int)aux;
 				if (qntdNos == aux2-1) {
 					System.out.println("Arvore cheia!");
@@ -129,6 +130,9 @@ public class AVlMain {
 				}
 				if(arvore.quaseCompleta()){
 					System.out.println("Arvore quase completa!");
+				}
+				if (qntdNos == completa+1) {
+					System.out.println("Arvore Completa!");
 				}
 				break;	
 			default:
